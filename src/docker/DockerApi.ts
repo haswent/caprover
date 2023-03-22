@@ -6,7 +6,7 @@ import {
     IDockerApiPort,
     IDockerContainerResource,
     PreDeployFunction,
-    VolumesTypes
+    VolumesTypes,
 } from '../models/OtherTypes'
 import BuildLog from '../user/BuildLog'
 import CaptainConstants from '../utils/CaptainConstants'
@@ -1177,10 +1177,13 @@ class DockerApi {
                         Driver: 'overlay',
                         Attachable: true,
                         IPAM: {
-                            Config: [{
-                              Subnet: "10.0.1.0/16",
-                            }]
-                        }
+                            Driver: 'default',
+                            Config: [
+                                {
+                                    Subnet: '10.0.1.0/16',
+                                },
+                            ],
+                        },
                     })
                 }
 
